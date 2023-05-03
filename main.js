@@ -28,24 +28,22 @@ const pAequorFactory = (specimanNum, dna) => {
       return this.dna;
     },
     compareDNA(dnaObj) {
-      let total = 0;
-      let count = 0;
-      for (let i = 0; dnaObj.length > i; i++) {
-        if (this.dna[i] === dnaObj[i]) {
-          count++;
-        }
-      }
-      total = ((count / this.dna.length) * 100).toFixed(2);
+      const matchingBase = this.dna.reduce((previous, current, index, arr) => {
+       if (arr[index] === dnaObj.dna[index]){
+         return previous + 1
+       }else {
+         return previous
+       }
+      }, 0 );
+     total = ((matchingBase / this.dna.length) * 100).toFixed(2);
       console.log(`${this.specimanNum} and ${dnaObj.specimanNum} have ${total}% DNA in common.`);
-
-    },
-  };
-};
+     },
+   };
+ };
 
 const ex1 = ["A", "C", "T", "G"];
 const ex2 = ["C", "A", "T", "T"];
 
 //console.log(pAequorFactory(1,mockUpStrand()))
 pAequorFactory(1, mockUpStrand()).mutate();
-pAequorFactory(2, ex1).compareDNA(ex2);
-
+pAequorFactory(1, ex1).compareDNA(pAequorFactory(2, ex2));
