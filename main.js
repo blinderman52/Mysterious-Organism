@@ -44,6 +44,6 @@ const pAequorFactory = (specimanNum, dna) => {
 const ex1 = ["A", "C", "T", "G"];
 const ex2 = ["C", "A", "T", "T"];
 
-//console.log(pAequorFactory(1,mockUpStrand()))
+
 pAequorFactory(1, mockUpStrand()).mutate();
 pAequorFactory(1, ex1).compareDNA(pAequorFactory(2, ex2));
